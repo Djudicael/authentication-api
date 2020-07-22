@@ -1,4 +1,4 @@
-const {express, bodyParser} =require('../deps.js');
+import { express, bodyParser } from '../deps.mjs';
 
 const app = express();
 
@@ -8,4 +8,4 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-module.exports = app;
+export default app;
