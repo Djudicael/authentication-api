@@ -1,12 +1,12 @@
-const rethinkdb = require('rethinkdb');
+import rethinkdb  from 'rethinkdb';
+import { customerAuthenticationRethinkDB } from '../src/config/config.mjs';
 
-rethinkdb.connect({
-    host: 'localhost',
-    port: 28015,
-    db: 'mydb'
-}, (err, conn) => {
+console.log(customerAuthenticationRethinkDB);
+
+rethinkdb.connect(customerAuthenticationRethinkDB, (err, conn) => {
     if (err) throw err;
-    //createTable(conn, 'users');
+    //createTable(conn, 'customers');
+    //createTable(conn, 'devices');
     //addUsers(conn);
     getUsers(conn);
 });
@@ -28,7 +28,7 @@ function addUsers(conn) {
         { name: 'Jen Williams', city: 'Miami', age: 35 }
     ];
 
-    rethinkdb.table('users').insert(users).run(conn, (err, result) => {
+    rethinkdb.table('customers').insert(users).run(conn, (err, result) => {
         console.log(JSON.stringify(result));
     });
 
@@ -36,7 +36,7 @@ function addUsers(conn) {
 
 function getUsers(conn) {
 
-    rethinkdb.table('users').run(conn, (err, cursor) => {
+    rethinkdb.table('customers').run(conn, (err, cursor) => {
         cursor.toArray((err, result) => console.log(JSON.stringify(result)));
 
     });

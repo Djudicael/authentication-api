@@ -1,9 +1,9 @@
 import { argon2, jwt } from '../../deps.mjs';
-import UserDto from '../dto/UserDto/mjs';
-import UsersRepository from '../repository/UsersRepository.mjs';
+import UserDto from '../dto/UserDto.mjs';
+import UsersRepository from '../repository/UserRepository.mjs';
 
-//TODO look for the database
-const userRepository= new UsersRepository(userColection);
+
+const userRepository= new UsersRepository();
 
 export default class AuthenticationService {
 
@@ -17,11 +17,11 @@ export default class AuthenticationService {
         userDTO.password = await argon2.hash(user.password);
         userDTO.lastName = user.lastName;
 
-        return this.userRepository.create(userDTO);
+        return await userRepository.create(userDTO);
     }
 
     async login(login) {
-        const userRecord = await this.userRepository.getUserByEmail(login.email);
+        const userRecord = await userRepository.getUserByEmail(login.email);
 
         if (!userRecord) {
             throw new Error('User not found')
