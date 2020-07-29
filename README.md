@@ -2,7 +2,7 @@
 
 This application is a bullet proof microservice for authentication using nodejs.
 
-The same project will be recreate in java golang etc. The archtecure is inspired by deno.
+The same project will be recreate in java golang etc. The architecture is inspired by deno.
 
 The code is supposed to be extract for migration to a deno project without too much effort ( even if in reality ...) that why there is a deps.mjs strongly inspired by deno.
 
