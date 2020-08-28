@@ -25,7 +25,7 @@ export default class UserRepository {
         const result = await client.execute(getByUserID, [id])
             .catch((error) => {
                 console.log(error);
-                
+
             });
         console.log(result.rows[0]);
 
@@ -45,7 +45,7 @@ export default class UserRepository {
         const result = await client.execute(getByUsername, [username])
             .catch((error) => {
                 console.log(error);
-              
+
             });
 
         const user = {
@@ -63,7 +63,7 @@ export default class UserRepository {
         const result = await client.execute(getByUsername, [email])
             .catch((error) => {
                 console.log(error);
-               
+
             });
 
         const user = {
